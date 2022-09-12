@@ -4,32 +4,31 @@ import java.util.Random;
 
 public class BatalhaNavalT1 {
 
-    public static String tabuleiro[][] = new String[8][8];
-    public static int posicao[][] = new int[8][8];
-    public static int randomize[] = new int[71];
-
-    public static void zeraPosicao() {
-        for (int l = 0; l < 8; l++) {
-            for (int c = 0; c < 8; c++) {
-                posicao[l][c] = 0;
+    public static String tabuleiro[][] = new String[8][8]; // CRIA UM TABULEIRO 8X8
+    public static int posicao[][] = new int[8][8]; // CRIA POSICOES DOS BARCOS NO TABULEIRO
+    public static int randomize[] = new int[71];  // 
+    public static void zeraPosicao() { //
+        for (int l = 0; l < 8; l++) { //
+            for (int c = 0; c < 8; c++) { // PREENCHE AS LINHAS E COLUNAS COM O VALOR 0
+                posicao[l][c] = 0; //
             }
         }
     }
 
-    public static void cls() {
-        for (int i = 0; i < 30; i++) {
-            System.out.println("");
+    public static void cls() { //
+        for (int i = 0; i < 30; i++) { // LIMPAR TELA
+            System.out.println(""); //
         }
     }
 
-    public static void gerarPosicoes() {
-        Random random = new Random();
-        for (int i = 0; i < randomize.length; i++) {
-            randomize[i] = random.nextInt(8);
+    public static void gerarPosicoes() { //
+        Random random = new Random(); //
+        for (int i = 0; i < randomize.length; i++) { // GERA POSICOES DE FORMA ALEATORIA
+            randomize[i] = random.nextInt(8); //
         }
     }
 
-    public static void posicaoDosSubmarinos() {
+    public static void posicaoDosSubmarinos() { // COLOCA AS EMBARCACOES DE FORMA ALEATORIA
 
         posicao[randomize[1]][randomize[2]] = 1;
         posicao[randomize[3]][randomize[4]] = 1;
@@ -38,7 +37,7 @@ public class BatalhaNavalT1 {
         posicao[randomize[9]][randomize[10]] = 1;
     }
 
-    public static void posicaoDosDistroyers() {
+    public static void posicaoDosDistroyers() { // COLOCA AS EMBARCACOES DE FORMA ALEATORIA
 
         posicao[randomize[11]][randomize[12]] = 3;
         posicao[randomize[13]][randomize[14]] = 3;
@@ -50,7 +49,7 @@ public class BatalhaNavalT1 {
         posicao[randomize[25]][randomize[26]] = 3;
     }
 
-    public static void posicaoDosCruzadores() {
+    public static void posicaoDosCruzadores() { // COLOCA AS EMBARCACOES DE FORMA ALEATORIA
 
         posicao[randomize[27]][randomize[28]] = 5;
         posicao[randomize[29]][randomize[30]] = 5;
@@ -63,7 +62,7 @@ public class BatalhaNavalT1 {
         posicao[randomize[43]][randomize[44]] = 5;
     }
 
-    public static void posicaoDosNavios() {
+    public static void posicaoDosNavios() { // COLOCA AS EMBARCACOES DE FORMA ALEATORIA
 
         posicao[randomize[45]][randomize[46]] = 7;
         posicao[randomize[47]][randomize[48]] = 7;
@@ -75,7 +74,7 @@ public class BatalhaNavalT1 {
         posicao[randomize[59]][randomize[60]] = 7;
     }
 
-    public static void posicaoDoPortaAviao() {
+    public static void posicaoDoPortaAviao() { // COLOCA AS EMBARCACOES DE FORMA ALEATORIA
 
         posicao[randomize[61]][randomize[62]] = 9;
         posicao[randomize[63]][randomize[64]] = 9;
@@ -84,7 +83,7 @@ public class BatalhaNavalT1 {
         posicao[randomize[69]][randomize[70]] = 9;
     }
 
-    public static int lerLinha() {
+    public static int lerLinha() { // FUNCAO PARA LER A LINHA QUE O JOGADOR ESCOLHER
         BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
         int Linha = 0;
         try {
@@ -102,7 +101,7 @@ public class BatalhaNavalT1 {
         }
     }
 
-    public static int lerColuna() {
+    public static int lerColuna() { // FUNCAO PARA LER A COLUNA QUE O JOGADOR ESCOLHER
         BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
         int Coluna = 0;
         try {
@@ -121,15 +120,15 @@ public class BatalhaNavalT1 {
 
     }
 
-    public static void inicilizaMatriz() {
-        for (int l = 0; l < 8; l++) {
-            for (int c = 0; c < 8; c++) {
-                tabuleiro[l][c] = " ";
+    public static void inicilizaMatriz() { //
+        for (int l = 0; l < 8; l++) { //
+            for (int c = 0; c < 8; c++) { // PREENCHE AS LINHAS E COLUNAS COM ELEMENTOS DE 0 A 7
+                tabuleiro[l][c] = " "; //
             }
         }
     }
 
-    public static void imprimeTabuleiro() {
+    public static void imprimeTabuleiro() { // CRIA O TABULEIRO NO CONSOLE E PREENCHE OS VALORES DE CADA VETOR
         System.out.println("----------------------------------");
         System.out.println("--------- LANÇANDO BOMBA!! ---------");
         System.out.println(" ");
@@ -145,7 +144,7 @@ public class BatalhaNavalT1 {
         }
     }
 
-    public static void verificaPosicao() {
+    public static void verificaPosicao() { // VARIAVEIS USADA PARA SABER QUANDO O JOGO TERMINA
 
         int submarino = 5;
         int distroyer = 8;
@@ -154,16 +153,16 @@ public class BatalhaNavalT1 {
         int portaAvioes = 5;
         int pontos = 0;
         
-        int controladora = 0;
+        int controladora = 0; // UTILIZADO PARA CONTROLAR O LOOP
 
-        while (controladora == 0) {
+        while (controladora == 0) { // UTILIZADO PARA CONTROLAR O LOOP
             int lin = lerLinha();
             int col = lerColuna();
 
             int escolha = posicao[lin][col];
             System.out.println(escolha);
 
-            if (tabuleiro[lin][col] == " ") {
+            if (tabuleiro[lin][col] == " ") { // MENSAGEM SE ACERTOU E OS PONTOS COM A MARCACAO NO TABULEIRO
                 cls();
                 switch (escolha) {
                     case 0:
@@ -222,7 +221,7 @@ public class BatalhaNavalT1 {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // FUNCOES QUE INICIALIZAM AS EMBARCACOES
         int linha, coluna;
 
         zeraPosicao();
@@ -233,10 +232,10 @@ public class BatalhaNavalT1 {
         posicaoDosNavios();
         posicaoDoPortaAviao();
 
-        inicilizaMatriz();
+        inicilizaMatriz(); // FUNCOES QUE INICIALIZAM AS MATRIZES
         imprimeTabuleiro();
 
-        verificaPosicao();
+        verificaPosicao(); // CHAMAMOS O METODO PARA INICIAR O JOGO
         System.out.println("Parabéns você ganhou!!");
 
     }
